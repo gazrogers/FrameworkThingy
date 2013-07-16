@@ -8,7 +8,6 @@
 
 class SampleApp1 extends Application
 {
-    //var testfunc=(x: Request)=>{new Response(List[(String, String)](), "")}
     routesMap=Map(("three", Map(("one",(x:Request)=>new Response(List[(String, String)](), "")))))
 }
 

@@ -7,7 +7,7 @@
  */
 trait DefaultRouter
 {
-    var routesMap: Map[String, Map[String, (Request)=>Response]]=Map.empty  //method -> (location -> function)
+    var routesMap: Map[String, Map[String, Request => Response]]=Map.empty  //method -> (location -> function)
 
     def routes()={}
 

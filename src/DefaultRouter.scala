@@ -14,16 +14,11 @@ trait DefaultRouter
 
     def routes()={}
 
-    def setupRoutes(appRootDir: String)=
+    def setupRoutes(appRootDir: String)
     {
         // default router will setup routes based on location in the directory
-        println("Default router")
         val htmlfiles=recursiveListFiles(new File(appRootDir+"/src/views"), """.*.html""".r)
-        htmlfiles.map(f => addToMap("GET", f.getName.split('.')(0), doSomething))
-
-        println("RoutesMap:")
-        println(routesMap)
-        println()
+        htmlfiles.map(f => addToMap("GET", File.separator+f.getName.split('.')(0), doSomething(appRootDir+"/src/views", File.separator+f.getName)))
     }
 
     def addToMap(method: String, url: String, function: Request => Response) =
@@ -45,8 +40,11 @@ trait DefaultRouter
         }
     }
 
-    def doSomething(req: Request) =
+    def doSomething(appRootDir:String, url: String)(req: Request) =
     {
-        new Response(List[(String, String)](), "")
+        println("File requested: "+url)
+        val source = scala.io.Source.fromFile(appRootDir+url)
+
+        new Response(List[(String, String)](), (source.getLines mkString "\n"))
     }
 }

@@ -22,6 +22,8 @@ trait Application extends DefaultRouter
                 List[(String, String)]()
         val httpVersion=(maj.toInt,min.toInt)
         "Method: "+method+"\nURL: "+requestUrl+"\nHTTP version: "+httpVersion+"\nHeaders: ("+headerList.mkString(", ")+")\nBody: "+body
+
+        routesMap("GET")(requestUrl)(new Request(method, requestUrl, httpVersion, headerList, body)).toString
     }
 
     setupRoutes(appLocation)

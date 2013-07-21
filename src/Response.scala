@@ -6,3 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 case class Response(headers: List[(String, String)], body: String)
+{
+    override def toString=
+    {
+        body
+    }
+}

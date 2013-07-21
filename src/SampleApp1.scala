@@ -12,7 +12,7 @@ class SampleApp1 extends Application
 
 class SampleApp2 extends Application with Router
 {
-    override def routes=
+    override def routes()=
     {
         get("/anotherpage") {req: Request =>
             println("url1 function (GET)")
@@ -40,16 +40,16 @@ object testApplication extends App
     val testRequest3="GET /index HTTP/1.1\r\nheader1: value1\r\nheader2: value2\r\n\r\nBody text"
 
     println(app1.generateResponse(testRequest))
-    println
+    println()
     println(app1.generateResponse(testRequest2))
-    println
+    println()
     println(app1.generateResponse(testRequest3))
-    println
+    println()
 
     println(app2.generateResponse(testRequest))
-    println
+    println()
     println(app2.generateResponse(testRequest2))
-    println
+    println()
     println(app2.generateResponse(testRequest3))
-    println
+    println()
 }

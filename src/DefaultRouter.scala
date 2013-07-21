@@ -45,6 +45,6 @@ trait DefaultRouter
         println("File requested: "+url)
         val source = scala.io.Source.fromFile(appRootDir+url)
 
-        new Response(List[(String, String)](), (source.getLines mkString "\n"))
+        new Response(List[(String, String)](), source.getLines mkString "\n")
     }
 }

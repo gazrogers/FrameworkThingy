@@ -7,7 +7,7 @@
  */
 trait Router extends DefaultRouter
 {
-    override def setupRoutes()=
+    override def setupRoutes(appRootDir: String)=
     {
         // this router will call user defined routes method
         routes()
@@ -21,10 +21,5 @@ trait Router extends DefaultRouter
     def post(url: String)(function: Request => Response) =
     {
         addToMap("POST", url, function)
-    }
-
-    def addToMap(method: String, url: String, function: Request => Response) =
-    {
-        this.routesMap+=(method -> (routesMap.getOrElse(method, Map[String, Request => Response]())+(url -> function)))
     }
 }

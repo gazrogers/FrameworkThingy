@@ -7,6 +7,8 @@
  */
 trait Application extends DefaultRouter
 {
+    val appLocation=System.getProperty("user.dir")
+
     def generateResponse(request:String): String =
     {
         val requestParts="""(?s)^(.*?)(\r\n.*)?\r\n\r\n(.*)?$""".r
@@ -22,5 +24,5 @@ trait Application extends DefaultRouter
         "Method: "+method+"\nURL: "+requestUrl+"\nHTTP version: "+httpVersion+"\nHeaders: ("+headerList.mkString(", ")+")\nBody: "+body
     }
 
-    setupRoutes()
+    setupRoutes(appLocation)
 }

@@ -11,6 +11,7 @@ trait Router extends DefaultRouter
     {
         // this router will call user defined routes method
         routes()
+        println(routesMap)
     }
 
     def get(url: String)(function: Request => Response) =

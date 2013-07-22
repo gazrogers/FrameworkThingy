@@ -20,7 +20,14 @@ trait DefaultRouter
         val viewsLocation=sep+"src"+sep+"views"
         // default router will setup routes based on location in the directory
         val htmlFiles=recursiveListFiles(new File(appRootDir+viewsLocation), """.*.html""".r)
-        htmlFiles.map(f => addToMap("GET", "/"+f.getName.split('.')(0), doSomething(appRootDir+viewsLocation, sep+f.getName)))
+        htmlFiles.map{
+            f =>
+                val file=f.getCanonicalPath
+                            .stripPrefix(appRootDir+viewsLocation+sep)
+                            .replaceAllLiterally("""\""", """/""")
+                addToMap("GET", "/"+file.split('.')(0), doSomething(appRootDir+viewsLocation, sep+file))
+        }
+        println(routesMap)
     }
 
     def addToMap(method: String, url: String, function: Request => Response) =

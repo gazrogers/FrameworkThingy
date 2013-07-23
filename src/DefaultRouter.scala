@@ -1,9 +1,8 @@
 /**
- * Created with IntelliJ IDEA.
- * User: garethrogers
- * Date: 16/07/2013
- * Time: 22:41
- * To change this template use File | Settings | File Templates.
+ * The default router used by the application
+ * Creates routes based on the contents of the views directory
+ *
+ * Any user defined router must inherit from this router
  */
 import java.io.File
 import scala.util.matching.Regex
@@ -14,6 +13,11 @@ trait DefaultRouter
 
     def routes()={}
 
+    def addToMap(method: String, url: String, function: Request => Response) =
+    {
+        this.routesMap+=(method -> (routesMap.getOrElse(method, Map[String, Request => Response]())+(url -> function)))
+    }
+
     def setupRoutes(appRootDir: String)
     {
         val sep=File.separator
@@ -23,16 +27,11 @@ trait DefaultRouter
         htmlFiles.map{
             f =>
                 val file=f.getCanonicalPath
-                            .stripPrefix(appRootDir+viewsLocation+sep)
-                            .replaceAllLiterally("""\""", """/""")
+                        .stripPrefix(appRootDir+viewsLocation+sep)
+                        .replaceAllLiterally("""\""", """/""")
                 addToMap("GET", "/"+file.split('.')(0), doSomething(appRootDir+viewsLocation, sep+file))
         }
         println(routesMap)
-    }
-
-    def addToMap(method: String, url: String, function: Request => Response) =
-    {
-        this.routesMap+=(method -> (routesMap.getOrElse(method, Map[String, Request => Response]())+(url -> function)))
     }
 
     def recursiveListFiles(f: File, r: Regex): Array[File] =

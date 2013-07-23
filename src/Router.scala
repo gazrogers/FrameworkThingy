@@ -1,9 +1,6 @@
 /**
- * Created with IntelliJ IDEA.
- * User: garethrogers
- * Date: 16/07/2013
- * Time: 20:11
- * To change this template use File | Settings | File Templates.
+ * Alternative router
+ * Allows the user to define their own routes using get and post methods
  */
 trait Router extends DefaultRouter
 {

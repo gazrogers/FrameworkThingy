@@ -1,9 +1,5 @@
 /**
- * Created with IntelliJ IDEA.
- * User: garethrogers
- * Date: 16/07/2013
- * Time: 20:03
- * To change this template use File | Settings | File Templates.
+ * Classes for testing the framework as I develop it
  */
 
 class SampleApp1 extends Application
@@ -24,8 +20,8 @@ class SampleApp2 extends Application with Router
             new Response(List[(String, String)](), "")
         }
 
-        post("/stuff/things") {req: Request =>
-            println("url1 function (POST)")
+        get("/stuff/things") {req: Request =>
+            println("url3 function (GET)")
             new Response(List[(String, String)](), "")
         }
     }
@@ -46,10 +42,10 @@ object testApplication extends App
     println(app1.generateResponse(testRequest3))
     println()
 
-//    println(app2.generateResponse(testRequest))
-//    println()
-//    println(app2.generateResponse(testRequest2))
-//    println()
-//    println(app2.generateResponse(testRequest3))
-//    println()
+    println(app2.generateResponse(testRequest))
+    println()
+    println(app2.generateResponse(testRequest2))
+    println()
+    println(app2.generateResponse(testRequest3))
+    println()
 }

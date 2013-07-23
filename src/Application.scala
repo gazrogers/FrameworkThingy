@@ -1,9 +1,5 @@
 /**
- * Created with IntelliJ IDEA.
- * User: garethrogers
- * Date: 14/07/2013
- * Time: 19:41
- * To change this template use File | Settings | File Templates.
+ * The trait that must be mixed into every application using the framework
  */
 trait Application extends DefaultRouter
 {

@@ -1,3 +1,5 @@
+package net.garethrogers.framework
+
 /**
  * Represents a response to be returned from the application
  */

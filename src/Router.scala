@@ -1,3 +1,5 @@
+package net.garethrogers.framework
+
 /**
  * Alternative router
  * Allows the user to define their own routes using get and post methods

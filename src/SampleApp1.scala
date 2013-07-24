@@ -1,6 +1,9 @@
+package net.garethrogers.framework
+
 /**
  * Classes for testing the framework as I develop it
  */
+import org.jboss.netty.bootstrap
 
 class SampleApp1 extends Application
 {

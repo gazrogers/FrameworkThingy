@@ -1,3 +1,5 @@
+package net.garethrogers.framework
+
 /**
  * The trait that must be mixed into every application using the framework
  */

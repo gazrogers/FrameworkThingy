@@ -1,3 +1,5 @@
+package net.garethrogers.framework
+
 /**
  * The default router used by the application
  * Creates routes based on the contents of the views directory

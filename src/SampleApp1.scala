@@ -3,7 +3,7 @@ package net.garethrogers.framework
 /**
  * Classes for testing the framework as I develop it
  */
-import org.jboss.netty.bootstrap
+import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
 
 class SampleApp1 extends Application
 {

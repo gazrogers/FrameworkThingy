@@ -9,7 +9,7 @@ package net.garethrogers.framework
 import java.io.File
 import scala.util.matching.Regex
 
-trait DefaultRouter
+trait DefaultRouter extends Templating
 {
     var routesMap: Map[String, Map[String, Request => Response]]=Map.empty  //method -> (location -> function)
 
@@ -53,8 +53,8 @@ trait DefaultRouter
     def doSomething(appRootDir:String, url: String)(req: Request) =
     {
         println("File requested: "+url)
-        val source = scala.io.Source.fromFile(appRootDir+url)
+        val output=processView(appRootDir+url)
 
-        new Response(List[(String, String)](), source.getLines mkString "\n")
+        new Response(List[(String, String)](), output)
     }
 }

@@ -53,7 +53,7 @@ trait DefaultRouter extends Templating
     def doSomething(appRootDir:String, url: String)(req: Request) =
     {
         println("File requested: "+url)
-        val output=processView(appRootDir+url)
+        val output=processView(appRootDir, url)
         new Response(List[(String, String)](), output)
     }
 }
